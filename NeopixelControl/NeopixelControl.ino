@@ -1,12 +1,5 @@
 #include<Adafruit_NeoPixel.h>
 
-#define PIN    	2
-#define N_LEDS  24
-
-Adafruit_NeoPixel ring = Adafruit_NeoPixel(N_LEDS, PIN, NEO_GRB + NEO_KHZ800);
-
-#include<Adafruit_NeoPixel.h>
-
 #define PIN		2
 #define	N_LEDS	24
 
@@ -26,6 +19,11 @@ void setColour(int r, int g, int b) {
   red=r;
   green=g;
   blue=b;
+}
+
+int readPotValue(int port) {
+  int value=analogRead(port);
+  return value;
 }
 
 void loop()
