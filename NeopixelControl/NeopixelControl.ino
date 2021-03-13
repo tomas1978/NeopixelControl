@@ -39,6 +39,7 @@ void loop()
   
   int potValue=readPotValue(0); //left end: 0, right end: 1023  
   Serial.println(potValue);
+  int numberOfLeds=map(potValue,0,1023,0,24);
   
   delay(10);
   switch(buttonEffect) {
@@ -56,7 +57,7 @@ void loop()
     
   }
   ring.fill(0,0,0);
-  for(int i=0;i<24;i++) {
+  for(int i=0;i<numberOfLeds;i++) {
   ring.setPixelColor(i, ring.Color(red,green,blue));
     ring.show();
     delay(42);
