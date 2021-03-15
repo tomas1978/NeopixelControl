@@ -30,6 +30,7 @@ void loop()
 {
   int buttonEffect=0;
   if(digitalRead(buttonPin)==HIGH) {
+    delay(10);
     Serial.println("Tryck");
     if(buttonEffect<3)
       buttonEffect++;
@@ -53,13 +54,12 @@ void loop()
       setColour(0, 0, 255);
       break;
     default:
-      setColour(255,255,255);
-    
+      setColour(255,255,255);  
   }
   ring.fill(0,0,0);
   for(int i=0;i<numberOfLeds;i++) {
   ring.setPixelColor(i, ring.Color(red,green,blue));
     ring.show();
-    delay(42);
+    delay(10);
   }
 }
