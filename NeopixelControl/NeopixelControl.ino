@@ -26,24 +26,28 @@ int readPotValue(int port) {
   return value;
 }
 
-void loop()
-{
+int colourEffect(int buttonPin) {
   int buttonEffect=0;
   if(digitalRead(buttonPin)==HIGH) {
     delay(10);
     Serial.println("Tryck");
-    if(buttonEffect<3)
+    if(buttonEffect<=10)
       buttonEffect++;
-    else
+    else 
       buttonEffect=0;
   }
+  return buttonEffect;
+}
   
+
+void loop()
+{
   int potValue=readPotValue(0); //left end: 0, right end: 1023  
   Serial.println(potValue);
   int numberOfLeds=map(potValue,0,1023,0,24);
   
   delay(10);
-  switch(buttonEffect) {
+  switch(colourEffect(buttonPin)) {
     case 0:
       setColour(255, 0, 0);
       break;
